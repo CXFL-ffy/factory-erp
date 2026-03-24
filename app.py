@@ -13,7 +13,7 @@ from datetime import datetime, timedelta
 import os
 from dotenv import load_dotenv
 import folium
-from streamlit_folium import st_folium
+# from streamlit_folium import st_folium #
 import json
 
 # 加载环境变量
