@@ -11,13 +11,12 @@ import plotly.graph_objects as go
 from supabase import create_client, Client
 from datetime import datetime, timedelta
 import os
-from dotenv import load_dotenv
+import streamlit as st
 import folium
 # from streamlit_folium import st_folium #
 import json
 
-# 加载环境变量
-load_dotenv()
+
 
 # ============================================================================
 # 初始化配置
@@ -29,9 +28,9 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Supabase 连接
-SUPABASE_URL = os.getenv("SUPABASE_URL", "https://your-project.supabase.co")
-SUPABASE_KEY = os.getenv("SUPABASE_KEY", "your-anon-key")
+# Supabase 连接（使用 Streamlit Secrets）
+SUPABASE_URL = st.secrets["SUPABASE_URL"]
+SUPABASE_KEY = st.secrets["SUPABASE_KEY"]
 
 try:
     supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
